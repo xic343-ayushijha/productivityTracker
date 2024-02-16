@@ -18,7 +18,6 @@ export function Contributor() {
         return setCommit(trafficData);
       });
   }, []);
-
   const data = {
     labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
     datasets: [
