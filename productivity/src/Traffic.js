@@ -8,7 +8,16 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 let trafficData;
 
 export const data = {
-  labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange","Pink","Indigo"],
+  labels: [
+    "Red",
+    "Blue",
+    "Yellow",
+    "Green",
+    "Purple",
+    "Orange",
+    "Pink",
+    "Indigo",
+  ],
   datasets: [
     {
       label: "# of Votes",
@@ -40,17 +49,11 @@ export const data = {
 };
 
 export function Traffic() {
-
   useEffect(() => {
-    fetch(
-      "https://api.github.com/repos/xic343-ayushijha/shop-cart/pulls"
-    )
+    fetch("https://api.github.com/repos/xic343-ayushijha/shop-cart/pulls")
       .then((res) => res.json())
       .then((data) => {
-        let a= [12, 19, 3, 5, 2, 3];
-        console.log(a);
-        trafficData = data.map(elt=>elt.number);
-        console.log(trafficData,"commits");
+        trafficData = data.map((elt) => elt.number);
       });
   }, []);
   return <Doughnut data={data} />;
