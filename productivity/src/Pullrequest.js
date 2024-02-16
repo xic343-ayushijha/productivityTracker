@@ -7,7 +7,7 @@ function Commits (){
     useEffect(()=>{
         fetch('https://api.github.com/repos/xic343-ayushijha/shop-cart/pulls').then(
             res=>res.json()).then(data=>{
-                // console.log(data,"pr");
+                console.log(data,"pulls");
                 return setPr(data[0]);
             });
         

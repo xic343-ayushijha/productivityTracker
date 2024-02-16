@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function Commits (){
+function Visual (){
 
     const [commit,setCommit]=useState(null);
 
@@ -22,4 +22,4 @@ function Commits (){
 }
 
 
-export default Commits;
+export default Visual;
