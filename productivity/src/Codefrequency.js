@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -7,8 +7,8 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
 
 //used Bar chart
 
@@ -21,41 +21,50 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-    title: {
-      display: true,
-      text: 'Chart.js Bar Chart',
-    },
-  },
-};
-const list1=[326,456,222,111,666,444,888,111,977,578,987,655];
-const list2=[100,200,300,400,500,600,700,800,900,320,840,730];
-
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: list1.map((elt) => elt),
-      // data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: list2.map((elt) => elt),
-      // data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
-};
-
 export function Codefrequency() {
+  const [commit1, setCommit1] = useState([]);
+  const [commit2, setCommit2] = useState([]);
+  let trafficData1,trafficData2;
+  useEffect(() => {
+    fetch("https://api.github.com/repos/xic343-ayushijha/shop-cart/pulls")
+      .then((res) => res.json())
+      .then((data) => {
+        trafficData1 = data?.map((elt) => elt.number);
+        trafficData2 = data?.map((elt) => elt.number*2);
+        setCommit2(trafficData2);
+        setCommit1(trafficData1);
+      });
+  }, []);
+
+  const labels = ["January", "February", "March", "April", "May", "June", "July","August"];
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Chart.js Bar Chart",
+      },
+    },
+  };
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Dataset 1",
+        data: commit1?.map((elt) => elt),
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+      {
+        label: "Dataset 2",
+        data: commit2?.map((elt) => elt),
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
+      },
+    ],
+  };
   return <Bar options={options} data={data} />;
 }
