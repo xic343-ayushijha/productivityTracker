@@ -11,6 +11,7 @@ import { Participation } from "./Participation";
 function App() {
   return (
     <div className="App">
+
       <Contributor />
       <Participation />
       <Forks />

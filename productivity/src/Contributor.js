@@ -7,7 +7,6 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 // used Pie chart
 
 export function Contributor() {
-  let test = [12, 19, 3, 5, 2, 3];
   const [commit, setCommit] = useState([]);
   let trafficData;
   useEffect(() => {
