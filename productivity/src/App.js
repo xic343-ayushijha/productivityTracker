@@ -12,9 +12,9 @@ import { Routes, Route, Link } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-  <nav>
-        <Link to="/contributor"> contributor </Link> ||
-        <Link to="/participation"> participation </Link>
+      <nav className="navbar">
+        <Link to="/contributor" className="link"> contributor </Link> ||
+        <Link to="/participation"> participation </Link>||
         <Link to="/forks"> forks </Link> ||
         <Link to="/traffic"> traffic </Link>||
         <Link to="/codefrequency"> codefrequency </Link> ||

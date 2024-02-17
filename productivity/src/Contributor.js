@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import "./Contributor.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -9,7 +10,17 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export function Contributor() {
   const [commit, setCommit] = useState([]);
   let trafficData;
+  const headers = {
+    Authorization:
+      "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",
+  };
   useEffect(() => {
+    fetch(
+      "https://api.github.com/repos/xic343-ayushijha/productivityTracker/collaborators",
+      { headers }
+    )
+      .then((res) => res.json())
+      .then((data) => {});
     fetch("https://api.github.com/repos/xic343-ayushijha/shop-cart/pulls")
       .then((res) => res.json())
       .then((data) => {
@@ -46,7 +57,25 @@ export function Contributor() {
 
   return (
     <>
-       <Pie data={data} />;
+      <div className="section-wrapper">
+        <p className="chart-info">
+          da justo. Donec odio eros, tincidunt eget Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Proin porttitor purus quis mauris commodo
+          condimentum. Vestibulum facilisis consectetur mi ut sagittis. Cras
+          fermentum, nunc eu porttitor vulputate, neque quam hendrerit sapien, a
+          malesuada lacus lacus eget arcu. Suspendisse consequat vestibulum
+          malesuada. Etiam fermentum semper leo, sit amet interdum sem pretium
+          com morbi tristique senectus et netus et malesuada fames ac turpis
+          egestas. Aenean quis rhoncus elit, vel gravida justo. Donec odio eros,
+          tincidunt eget ultricies bibendum, euismod a enim. Nulla ac risus
+          vitae orci volutpat sodales. Proin tempus feugiat sagittis. Phasellus
+          interdum ultrices elit, a posuere massa convallis non. Quisque urna
+          ligula, dictum et mauris vitae, bibendum feugiat lorem.
+        </p>
+        <div className="chart-wrapper">
+          <Pie className="pie" data={data} />
+        </div>
+      </div>
     </>
   );
 }

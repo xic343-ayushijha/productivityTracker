@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+
+.navbar {
+  margin-top: 30px;
+  background: linear-gradient(coral,yellow);
+  padding: 10px;
+}
+
+.navbar a {
+  font-weight: 500;
+}
+
+a:hover{
+  background-color: white;
+  font-weight: bold;
+}

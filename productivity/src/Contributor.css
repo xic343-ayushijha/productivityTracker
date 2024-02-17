@@ -1,0 +1,16 @@
+.chart-wrapper {
+  width: 500px;
+  height: 500px;
+}
+
+.chart-info {
+  margin-top: 30px;
+  width: 400px;
+  height: 200px;
+}
+
+.section-wrapper {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
