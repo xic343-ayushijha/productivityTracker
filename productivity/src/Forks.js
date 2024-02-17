@@ -10,6 +10,7 @@ import {
   Filler,
   Legend,
 } from "chart.js";
+import "./Forks.css";
 
 import { Line } from "react-chartjs-2";
 
@@ -26,14 +27,18 @@ ChartJS.register(
 );
 
 export function Forks() {
-  const [commit, setCommit] = useState([]);
+  const [fork, setFork] = useState([]);
+  const [forkData, setForkData] = useState([]);
   let trafficData;
   useEffect(() => {
-    fetch("https://api.github.com/repos/xic343-ayushijha/shop-cart/pulls")
+    fetch(
+      "https://api.github.com/repos/AnkitSharma-007/angular-i18n-localization/forks"
+    )
       .then((res) => res.json())
       .then((data) => {
-        trafficData = data?.map((elt) => elt.number);
-        setCommit(trafficData);
+        trafficData = data?.map((elt) => elt.size);
+        setForkData(data[0]);
+        setFork(trafficData);
       });
   }, []);
 
@@ -67,7 +72,7 @@ export function Forks() {
       {
         fill: true,
         label: "Dataset 2",
-        data: commit.map((elt) => elt),
+        data: fork.map((elt) => elt),
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
@@ -77,20 +82,23 @@ export function Forks() {
   return (
     <>
       <div className="section-wrapper">
-        <p className="chart-info">
-          da justo. Donec odio eros, tincidunt eget Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Proin porttitor purus quis mauris commodo
-          condimentum. Vestibulum facilisis consectetur mi ut sagittis. Cras
-          fermentum, nunc eu porttitor vulputate, neque quam hendrerit sapien, a
-          malesuada lacus lacus eget arcu. Suspendisse consequat vestibulum
-          malesuada. Etiam fermentum semper leo, sit amet interdum sem pretium
-          com morbi tristique senectus et netus et malesuada fames ac turpis
-          egestas. Aenean quis rhoncus elit, vel gravida justo. Donec odio eros,
-          tincidunt eget ultricies bibendum, euismod a enim. Nulla ac risus
-          vitae orci volutpat sodales. Proin tempus feugiat sagittis. Phasellus
-          interdum ultrices elit, a posuere massa convallis non. Quisque urna
-          ligula, dictum et mauris vitae, bibendum feugiat lorem.
-        </p>
+        <div className="chart-info">
+          <p>
+            No of forks: <span className="chart-data">{fork.length}</span>{" "}
+          </p>
+          <p>
+            Repository name :{" "}
+            <span className="chart-data">{forkData.name} </span>{" "}
+          </p>
+          <p>
+            A fork is a new repository that shares code and visibility settings
+            with the original “upstream” repository. Forks are often used to
+            iterate on ideas or changes before they are proposed back to the
+            upstream repository, such as in open source projects or when a user
+            does not have write access to the upstream repository. For more
+            information, see "Working with forks."
+          </p>
+        </div>
         <div className="chart-wrapper">
           <Line options={options} data={data} />
         </div>

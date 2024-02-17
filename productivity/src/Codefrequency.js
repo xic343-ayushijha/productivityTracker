@@ -79,18 +79,9 @@ export function Codefrequency() {
     <>
       <div className="code-frquency section-wrapper">
         <p className="chart-info">
-          da justo. Donec odio eros, tincidunt eget Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Proin porttitor purus quis mauris commodo
-          condimentum. Vestibulum facilisis consectetur mi ut sagittis. Cras
-          fermentum, nunc eu porttitor vulputate, neque quam hendrerit sapien, a
-          malesuada lacus lacus eget arcu. Suspendisse consequat vestibulum
-          malesuada. Etiam fermentum semper leo, sit amet interdum sem pretium
-          com morbi tristique senectus et netus et malesuada fames ac turpis
-          egestas. Aenean quis rhoncus elit, vel gravida justo. Donec odio eros,
-          tincidunt eget ultricies bibendum, euismod a enim. Nulla ac risus
-          vitae orci volutpat sodales. Proin tempus feugiat sagittis. Phasellus
-          interdum ultrices elit, a posuere massa convallis non. Quisque urna
-          ligula, dictum et mauris vitae, bibendum feugiat lorem.
+          Analyzing changes to a repository's content You can see the changes to
+          the content of a repository by analyzing the repository's commits,
+          commit frequency, and content additions and deletions.
         </p>
         <div className="chart-wrapper">
           <Bar options={options} data={data} />
