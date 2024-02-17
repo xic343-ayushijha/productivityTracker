@@ -79,18 +79,12 @@ export function Participation() {
     <>
       <div className="section-wrapper">
         <p className="chart-info">
-          da justo. Donec odio eros, tincidunt eget Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Proin porttitor purus quis mauris commodo
-          condimentum. Vestibulum facilisis consectetur mi ut sagittis. Cras
-          fermentum, nunc eu porttitor vulputate, neque quam hendrerit sapien, a
-          malesuada lacus lacus eget arcu. Suspendisse consequat vestibulum
-          malesuada. Etiam fermentum semper leo, sit amet interdum sem pretium
-          com morbi tristique senectus et netus et malesuada fames ac turpis
-          egestas. Aenean quis rhoncus elit, vel gravida justo. Donec odio eros,
-          tincidunt eget ultricies bibendum, euismod a enim. Nulla ac risus
-          vitae orci volutpat sodales. Proin tempus feugiat sagittis. Phasellus
-          interdum ultrices elit, a posuere massa convallis non. Quisque urna
-          ligula, dictum et mauris vitae, bibendum feugiat lorem.
+          Participating in a discussion You can converse with the community and
+          maintainers in a forum within the repository for a project on GitHub.
+          Who can use this feature People with read access to a repository can
+          participate in discussions and polls in the repository. People with
+          read access to the source repository for organization discussions can
+          participate in discussions and polls in that organization.
         </p>
         <div className="chart-wrapper">
           <Bubble options={options} data={data} />

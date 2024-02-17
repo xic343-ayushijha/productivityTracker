@@ -14,4 +14,12 @@
     display: flex;
     justify-content: space-around;
   }
+
+  /* .content-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+  } */
   
+  .traffic-info {
+    width: 300px;
+  }

@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import "./Traffic.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 // used doughnut chart
 
 export function Traffic() {
-  const [commit, setCommit] = useState([]);
-  let trafficData;
+  const [traffic, setTraffic] = useState([]);
+  const [commitCount, setCommitCount] = useState([]);
+  let trafficData, count;
   useEffect(() => {
-    fetch("https://api.github.com/repos/xic343-ayushijha/shop-cart/pulls")
+    fetch(
+      "https://api.github.com/repos/xic343-ayushijha/productivityTracker/commits"
+    )
       .then((res) => res.json())
       .then((data) => {
-        trafficData = data.map((elt) => elt.number);
-        return setCommit(trafficData);
+        trafficData = data.map((elt) => elt.commit.comment_count);
+        setTraffic(trafficData);
+        count = trafficData.filter((elt) => elt !== 0);
+        setCommitCount(count.length);
       });
   }, []);
 
@@ -31,8 +37,7 @@ export function Traffic() {
     datasets: [
       {
         label: "# of Votes",
-        // data: [12, 19, 3, 5, 2, 3],
-        data: [10, 9, 6, 7, 8, 5, 4, 3],
+        data: traffic,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -60,20 +65,16 @@ export function Traffic() {
   return (
     <>
       <div className="section-wrapper">
-        <p className="chart-info">
-          da justo. Donec odio eros, tincidunt eget Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Proin porttitor purus quis mauris commodo
-          condimentum. Vestibulum facilisis consectetur mi ut sagittis. Cras
-          fermentum, nunc eu porttitor vulputate, neque quam hendrerit sapien, a
-          malesuada lacus lacus eget arcu. Suspendisse consequat vestibulum
-          malesuada. Etiam fermentum semper leo, sit amet interdum sem pretium
-          com morbi tristique senectus et netus et malesuada fames ac turpis
-          egestas. Aenean quis rhoncus elit, vel gravida justo. Donec odio eros,
-          tincidunt eget ultricies bibendum, euismod a enim. Nulla ac risus
-          vitae orci volutpat sodales. Proin tempus feugiat sagittis. Phasellus
-          interdum ultrices elit, a posuere massa convallis non. Quisque urna
-          ligula, dictum et mauris vitae, bibendum feugiat lorem.
-        </p>
+        <div className="content-wrapper">
+        <p className="chart-info">No of commits with comment : {commitCount}
+        <br />
+        <br />
+        <br />
+        Viewing traffic to a repository Anyone with push access to a
+          repository can view its traffic, including full clones (not fetches),
+          visitors from the past 14 days, referring sites, and popular content
+          in the traffic graph.</p>
+        </div>
         <div className="chart-wrapper">
           <Doughnut data={data} />
         </div>

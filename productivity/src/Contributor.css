@@ -14,3 +14,12 @@
   display: flex;
   justify-content: space-around;
 }
+
+.author {
+  font-weight: bold;
+}
+
+.author-img {
+  width: 100px;
+  height: 100px;
+}

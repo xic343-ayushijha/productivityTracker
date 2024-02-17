@@ -9,6 +9,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export function Contributor() {
   const [commit, setCommit] = useState([]);
+  const [contributor, setContributor] = useState([]);
   let trafficData;
   const headers = {
     Authorization:
@@ -16,11 +17,12 @@ export function Contributor() {
   };
   useEffect(() => {
     fetch(
-      "https://api.github.com/repos/xic343-ayushijha/productivityTracker/collaborators",
-      { headers }
+      "https://api.github.com/repos/xic343-ayushijha/shop-cart/stats/contributors"
     )
       .then((res) => res.json())
-      .then((data) => {});
+      .then((data) => {
+        setContributor(data[0]);
+      });
     fetch("https://api.github.com/repos/xic343-ayushijha/shop-cart/pulls")
       .then((res) => res.json())
       .then((data) => {
@@ -59,18 +61,15 @@ export function Contributor() {
     <>
       <div className="section-wrapper">
         <p className="chart-info">
-          da justo. Donec odio eros, tincidunt eget Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Proin porttitor purus quis mauris commodo
-          condimentum. Vestibulum facilisis consectetur mi ut sagittis. Cras
-          fermentum, nunc eu porttitor vulputate, neque quam hendrerit sapien, a
-          malesuada lacus lacus eget arcu. Suspendisse consequat vestibulum
-          malesuada. Etiam fermentum semper leo, sit amet interdum sem pretium
-          com morbi tristique senectus et netus et malesuada fames ac turpis
-          egestas. Aenean quis rhoncus elit, vel gravida justo. Donec odio eros,
-          tincidunt eget ultricies bibendum, euismod a enim. Nulla ac risus
-          vitae orci volutpat sodales. Proin tempus feugiat sagittis. Phasellus
-          interdum ultrices elit, a posuere massa convallis non. Quisque urna
-          ligula, dictum et mauris vitae, bibendum feugiat lorem.
+          <p className="author">Contributor: {contributor?.author?.login}</p>
+          <img className="author-img" src={contributor?.author?.avatar_url} />
+          <p>
+            Contributors. Git (in a git repository) identifies authors and
+            committers by email address. Github users can associate email
+            addresses with their accounts. When a user's set of email addresses
+            is found in the commit history of a github repo, github marks that
+            user as a contributor.1
+          </p>
         </p>
         <div className="chart-wrapper">
           <Pie className="pie" data={data} />
