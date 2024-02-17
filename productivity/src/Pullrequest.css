@@ -14,4 +14,12 @@
     display: flex;
     justify-content: space-around;
   }
+
+  li p{
+    text-align: left;
+  }
+
+  ul{
+    text-align: left;
+  }
   
