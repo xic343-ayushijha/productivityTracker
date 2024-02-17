@@ -11,10 +11,6 @@ export function Contributor() {
   const [commit, setCommit] = useState([]);
   const [contributor, setContributor] = useState([]);
   let trafficData;
-  const headers = {
-    Authorization:
-      "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",
-  };
   useEffect(() => {
     fetch(
       "https://api.github.com/repos/xic343-ayushijha/shop-cart/stats/contributors"

@@ -19,13 +19,23 @@ function Commits() {
   let list = msg?.map((elt) => <li>{elt}</li>);
   return (
     <>
-    <div class="commit-wrapper">
-    <p>author name : {commit?.author?.login}</p>
-      <p>commit msg : {commit?.commit?.message}</p>
-      <p>commit date : {commit?.commit?.committer.date}</p>
-      <p>commit msg</p>
-    </div>
-
+      <div className="commit-wrapper">
+        <p>
+          <b>author name : </b>
+          {commit?.author?.login}
+        </p>
+        <p>
+          <b>Latest commit msg : </b>
+          {commit?.commit?.message}
+        </p>
+        <p>
+          <b>Latest commit date : </b>
+          {commit?.commit?.committer.date}
+        </p>
+        <p style={{ textAlign: "center" }}>
+          <b>Commit messages: </b>
+        </p>
+      </div>
       <ul className="list">{list}</ul>
     </>
   );
